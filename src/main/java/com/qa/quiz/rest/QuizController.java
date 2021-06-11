@@ -34,7 +34,7 @@ public class QuizController {
 		public ResponseEntity<List<Quiz>> getQuiz() {
 			return ResponseEntity.ok(this.service.getQuiz());
 		}
-//
+
 //		@GetMapping("/getCar/{id}")
 //		public Car getPenguinById(@PathVariable Long id) {
 //			return this.service.getCarById(id);
