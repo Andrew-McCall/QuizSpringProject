@@ -35,6 +35,7 @@ public class QuizController {
 			return ResponseEntity.ok(this.service.getQuiz());
 		}
 
+		
 //		@GetMapping("/getCar/{id}")
 //		public Car getPenguinById(@PathVariable Long id) {
 //			return this.service.getCarById(id);
@@ -63,4 +64,6 @@ public class QuizController {
 //			return this.service.updateCar(id, car);
 //		}
 //	}
+		
+		
 }
