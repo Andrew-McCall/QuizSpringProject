@@ -26,7 +26,7 @@ public class QuestionService {
 		return this.repo.findAll();
 	}
 
-	public Question getQuestionzById(Long id) {
+	public Question getQuestionById(Long id) {
 		Optional<Question> question = this.repo.findById(id);
 		return question.get();
 	}
