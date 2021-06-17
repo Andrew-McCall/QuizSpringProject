@@ -3,11 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=C:\Users\andre\Documents\eclipse\QuizSpringProject\src\main\resources\static, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
 </head>
-<body>
-    <h1>test!</h1>
-    <p>Basic Test</p>
+
+
+
+<body style="background-color:rgb(190, 190, 190);">
+<main class="container">
+
+  <div class="my-3 p-5 bg-body rounded shadow-sm">
+    <form>
+    <div class="d-flex text-muted pt-4">
+      <label for="quizName">Quiz Name  </label>
+      <input type="text" class="form-control" id="quizName" placeholder="" value="" required="">
+    </div>
+
+    <div class="d-flex text-muted pt-4">
+      <label for="quizDescription">Description  </label>
+      <textarea type="text" class="form-control" id="quizDescription" placeholder="" value="" required=""></textarea>
+    </div>
+  </form>
+
+  <br>
+  <button class="btn btn-primary" onclick="create()" id="createNewQuiz" >Create New Quiz</button>
+
+
+  </div>
+
+  <div id="dynamicDiv" class="my-3 p-5 bg-body rounded shadow-sm"></div>
+
+</main>
+
+<script src="./js/index.js"></script>
+
 </body>
+
 </html>
