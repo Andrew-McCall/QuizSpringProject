@@ -13,7 +13,7 @@
 
   </head>
 
-<body style="background-color:rgb(190, 190, 190);">
+<body style="background-color:rgb(220, 220, 220);">
 <main class="container">
 
   <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -32,90 +32,117 @@
 <!-- List of quiz -->
 <div id="dynamicDiv" class="my-3 p-4 bg-body rounded shadow-sm"> </div>
 
-<!-- Modals (POPUPS) -->
-<div class="modal fade" id="questionCreateModal" tabindex="-1" aria-labelledby="questionCreateModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="questionCreateModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="questionQuestion" class="form-label">Question:</label>
-            <input type="text" class="form-control" id="questionQuestion" placeholder="" value="" required="">
-          </div>
-          <div class="mb-3">
-            <label for="questionAnswer" class="form-label">Answer:</label>
-            <input type="text" class="form-control" id="questionAnswer" placeholder="" value="" required=""></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button id="questionCreateModalButton" type="button" class="btn btn-primary">Create</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="quizEditModal" tabindex="-1" aria-labelledby="quizEditModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="quizEditModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="quizEditName" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="quizEditName" placeholder="" value="" required="">
-          </div>
-          <div class="mb-3">
-            <label for="quizEditDescription" class="form-label">Description:</label>
-            <input type="text" class="form-control" id="quizEditDescription" placeholder="" value="" required=""></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button id="quizEditModalButton" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-        <button id="quizDeleteModalButton" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="questionEditModal" tabindex="-1" aria-labelledby="questionEditModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="questionEditModalLabel">Edit Question</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="questionEditQuestion" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="questionEditQuestion" placeholder="" value="" required="">
-          </div>
-          <div class="mb-3">
-            <label for="questionEditAnswer" class="form-label">Description:</label>
-            <input type="text" class="form-control" id="questionEditAnswer" placeholder="" value="" required=""></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button id="questionEditModalButton" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
-        <button id="questionDeleteModalButton" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 </main>
 
+<div>
+  <!-- Modals (POPUPS) -->
+  <div class="modal fade" id="questionCreateModal" tabindex="-1" aria-labelledby="questionCreateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="questionCreateModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="questionQuestion" class="form-label">Question:</label>
+              <input type="text" class="form-control" id="questionQuestion" placeholder="" value="" required="">
+            </div>
+            <div class="mb-3">
+              <label for="questionAnswer" class="form-label">Answer:</label>
+              <input type="text" class="form-control" id="questionAnswer" placeholder="" value="" required=""></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="questionCreateModalButton" type="button" class="btn btn-primary">Create</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="quizEditModal" tabindex="-1" aria-labelledby="quizEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="quizEditModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="quizEditName" class="form-label">Name:</label>
+              <input type="text" class="form-control" id="quizEditName" placeholder="" value="" required="">
+            </div>
+            <div class="mb-3">
+              <label for="quizEditDescription" class="form-label">Description:</label>
+              <input type="text" class="form-control" id="quizEditDescription" placeholder="" value="" required=""></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="quizEditModalButton" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+          <button id="quizDeleteModalButton" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="questionEditModal" tabindex="-1" aria-labelledby="questionEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="questionEditModalLabel">Edit Question</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="questionEditQuestion" class="form-label">Name:</label>
+              <input type="text" class="form-control" id="questionEditQuestion" placeholder="" value="" required="">
+            </div>
+            <div class="mb-3">
+              <label for="questionEditAnswer" class="form-label">Description:</label>
+              <input type="text" class="form-control" id="questionEditAnswer" placeholder="" value="" required=""></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="questionEditModalButton" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+          <button id="questionDeleteModalButton" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="useModal" tabindex="-1" aria-labelledby="useModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="useModalLabel">Use Quiz</h5>
+        </div>
+        <div id="useModalBody" class="modal-body">
+          <button id="useModalQuestion" class="btn btn-light col-12" type="button" data-bs-toggle="collapse" data-bs-target="#useModalCollapse" aria-expanded="false" aria-controls="useModalCollapse">Question</button>
+
+            <div class="collapse" id="useModalCollapse">
+                <div id="useModalAnswer" class="card card-body">Answer</div>
+            </div>
+
+            <div id="useModalButtonGroup" class="btn-group mr-3 pt-4 col-12" role="group">
+              <button type="button" class="btn btn-secondary">1</button>
+              <button type="button" class="btn btn-secondary">2</button>
+              <button type="button" class="btn btn-secondary">3</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" >X</button>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 

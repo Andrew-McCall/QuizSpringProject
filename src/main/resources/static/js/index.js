@@ -62,12 +62,44 @@ function editQuizPopup(i, name, desc){
 }
 
 function editQuestionPopup(i, question, answer){
-  console.log(question, document.getElementById("questionEditQuestion"))
   document.getElementById("questionEditQuestion").value = question;
   document.getElementById("questionEditAnswer").value = answer;
   document.getElementById("questionEditModalButton").setAttribute("onClick", `editQuestion(${i})`);
 }
 
+function updateUseModal(question, answer){
+  document.getElementById("useModalAnswer").innerHTML = answer;
+  document.getElementById("useModalCollapse").setAttribute("class", "collapse");
+  let modalQuestion = document.getElementById("useModalQuestion");
+  modalQuestion.innerHTML = question;
+  modalQuestion.setAttribute("aria-expanded","false");
+}
+
+async function useQuizPopup(i){
+  fetch("./quiz/getQuiz/"+i, { 
+    method: 'get', 
+    headers: {
+    "Content-type": "application/json" //3
+    },
+    body: null
+    })
+    .then(res => res.json())
+    .then((data) => {
+      document.getElementById("useModalLabel").innerHTML = data.name;
+      document.getElementById("useModalQuestion").innerHTML = data.questions[0].question;
+      document.getElementById("useModalAnswer").innerHTML = data.questions[0].answer;
+
+      let buttonGroup = document.getElementById("useModalButtonGroup");
+      buttonGroup.innerHTML = "";
+
+      let x = 1;
+      data.questions.forEach(item => {
+        buttonGroup.innerHTML += `\n<button onClick="updateUseModal('${item.question}','${item.answer}')" type="button" class="btn btn-secondary">${x++}</button>`;
+      })
+      buttonGroup.innerHTML += "\n<button type=\"button\" class=\"btn btn-danger\" data-bs-dismiss=\"modal\" >X</button>";
+    }
+    ).catch((error) => console.log(`Request failed ${error}`))
+}
 
 async function createQuestion(i){
   let question = document.getElementById("questionQuestion");
@@ -154,7 +186,7 @@ async function getAll(){
 
   const element = document.getElementById("dynamicDiv");
   if (data.length == 0){
-    element.innerHTML = '<h1>No Quizzes Made Yet</h1>';
+    element.innerHTML = '<h1 class="text-center">No Quizzes Made Yet</h1>';
     return;
   }
   element.innerHTML = '';
@@ -162,6 +194,8 @@ async function getAll(){
     let parent = document.createElement("div");
     parent.setAttribute("class", "card");
     parent.setAttribute("id", item.id);
+
+    if (item!=data[0]) element.innerHTML += "\n<br>";
 
     let title = document.createElement("div");
     title.setAttribute("class","card-header");
@@ -187,16 +221,35 @@ async function getAll(){
 
       item.questions.forEach(quest =>{
         let row = document.createElement("tr");
-        row.innerHTML = `<td class=text-center>${quest.question}</td>\n<td class=text-center >${quest.answer}</td>\n<td class="text-center"><button data-bs-target="#questionEditModal" data-bs-toggle="modal" onclick="editQuestionPopup(${quest.id}, '${quest.question}', '${quest.answer}')" class="btn btn-warning">Edit</button><button onclick="deleteQuestion(${quest.id})" class="btn btn-danger">X</button></td>`;
+        row.innerHTML = `<td class=text-center>${quest.question}</td>\n<td class=text-center >${quest.answer}</td>\n<td class="text-center"><button data-bs-target="#questionEditModal" data-bs-toggle="modal" onClick="editQuestionPopup(${quest.id}, '${quest.question}', '${quest.answer}')" class="btn btn-info">Edit</button><button onClick="deleteQuestion(${quest.id})" class="btn btn-danger">X</button></td>`;
         tbody.appendChild(row);
       })
 
       table.appendChild(tbody);
       parent.appendChild(table);
-
+      
    }
 
-    let button = document.createElement("button");
+    let button;
+    if (item.questions.length != 0){
+      button = document.createElement("button");
+      button.innerHTML = "Use Quiz";
+      button.setAttribute("class","btn btn-primary");
+      button.setAttribute("onClick", `useQuizPopup(${item.id})`);
+      button.setAttribute("data-bs-toggle", "modal");
+      button.setAttribute("data-bs-target", "#useModal")
+      parent.appendChild(button);
+    }
+
+    button = document.createElement("button");
+    button.innerHTML = "Edit Quiz";
+    button.setAttribute("class","btn btn-info");
+    button.setAttribute("onClick", `editQuizPopup(${item.id},"${item.name}","${item.description}")`);
+    button.setAttribute("data-bs-toggle", "modal");
+    button.setAttribute("data-bs-target", "#quizEditModal")
+    parent.appendChild(button);
+
+    button = document.createElement("button");
     button.innerHTML = "New Question";
     button.setAttribute("class","btn btn-secondary");
     button.setAttribute("onClick", `createQuestionPopup(${item.id},"${item.name}")`);
@@ -204,16 +257,8 @@ async function getAll(){
     button.setAttribute("data-bs-target", "#questionCreateModal")
     parent.appendChild(button);
 
-    button = document.createElement("button");
-    button.innerHTML = "Edit Quiz";
-    button.setAttribute("class","btn btn-warning");
-    button.setAttribute("onClick", `editQuizPopup(${item.id},"${item.name}","${item.description}")`);
-    button.setAttribute("data-bs-toggle", "modal");
-    button.setAttribute("data-bs-target", "#quizEditModal")
-    parent.appendChild(button);
 
     element.appendChild(parent);
-    element.appendChild(document.createElement("br"));
   });
 
   })
