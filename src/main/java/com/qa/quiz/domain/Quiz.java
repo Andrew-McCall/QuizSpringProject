@@ -2,6 +2,7 @@ package com.qa.quiz.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Quiz {
 	private String description;
 
 	@JsonManagedReference
-	@OneToMany( mappedBy="quiz")
+	@OneToMany( mappedBy="quiz", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Question> questions;
 	
 	public Quiz() {
