@@ -61,9 +61,11 @@ function editQuizPopup(i, name, desc){
   document.getElementById("quizEditModalLabel").innerHTML = "Edit - " + name;
 }
 
-function editQuestionPopup(i, quizName){
-  document.getElementById("questionCreateModalButton").setAttribute("onClick", `createQuestion(${i})`);
-  document.getElementById("questionCreateModalLabel").innerHTML = quizName + " - Create Question";
+function editQuestionPopup(i, question, answer){
+  console.log(question, document.getElementById("questionEditQuestion"))
+  document.getElementById("questionEditQuestion").value = question;
+  document.getElementById("questionEditAnswer").value = answer;
+  document.getElementById("questionEditModalButton").setAttribute("onClick", `editQuestion(${i})`);
 }
 
 
@@ -117,7 +119,25 @@ async function editQuiz(i){
 }
 
 async function editQuestion(i){
-  console.log(i);
+  let question = document.getElementById("questionEditQuestion");
+  let answer = document.getElementById("questionEditAnswer");
+
+  if (question.value==""||answer.value=="") return;
+
+  fetch("./question/update/"+i, {
+    method: 'put', 
+    headers: {
+    "Content-type": "application/json" 
+    },
+    body: JSON.stringify( 
+    {
+      "id":i,
+      "question": question.value,
+      "answer": answer.value
+    })})
+    .then(res => res.json())
+    .then((data) => getAll())
+    .catch((error) => console.log(`Request failed ${error}`))
 }
 
 
@@ -167,7 +187,7 @@ async function getAll(){
 
       item.questions.forEach(quest =>{
         let row = document.createElement("tr");
-        row.innerHTML = `<td class=text-center>${quest.question}</td>\n<td class=text-center >${quest.answer}</td>\n<td class="text-center"><button onclick="editQuestion(${quest.id})" class="btn btn-warning">Edit</button><button onclick="deleteQuestion(${quest.id})" class="btn btn-danger" onclick = "questionDelete(${quest.id})">X</button></td>`;
+        row.innerHTML = `<td class=text-center>${quest.question}</td>\n<td class=text-center >${quest.answer}</td>\n<td class="text-center"><button data-bs-target="#questionEditModal" data-bs-toggle="modal" onclick="editQuestionPopup(${quest.id}, '${quest.question}', '${quest.answer}')" class="btn btn-warning">Edit</button><button onclick="deleteQuestion(${quest.id})" class="btn btn-danger">X</button></td>`;
         tbody.appendChild(row);
       })
 
