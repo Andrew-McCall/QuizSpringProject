@@ -1,6 +1,7 @@
 package com.qa.selenium;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.TimeUnit;
 
@@ -96,19 +97,30 @@ public class indexJsHtmlTest {
 		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div[3]/button[2]")).click();
 		
 		assertEquals("Test Question 01", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr[2]/td[1]")).getText());
-		assertEquals("Test Answer 02", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr[2]/td[2]")).getText());
+		assertEquals("Test Answer 01", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr[2]/td[2]")).getText());
 		
 	}
 
-//	@Test
-//	void deleteQuiz() {
-//		
-//	}
-//	
-//	@Test
-//	void deleteQuestion() {
-//		
-//	}
+	@Test
+	void deleteQuiz() {
+		driver.get("http://localhost:" + port); 
+
+		driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/button[2]")).click();
+		driver.findElement(By.id("quizDeleteModalButton")).click();
+		
+		assertEquals("No Quizzes Made Yet", driver.findElement(By.xpath("/html/body/main/div[2]/h1")).getText());
+	}
+	
+	@Test
+	void deleteQuestion() {
+		driver.get("http://localhost:" + port); 
+
+		driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr[1]/td[3]/button[2]")).click();
+		
+		System.out.println(driver.findElements(By.xpath("/html/body/main/div[2]/div[1]/table")));
+		assertTrue(!driver.findElements(By.xpath("/html/body/main/div[2]/div[1]/table")).isEmpty());
+
+	}
 //	
 //	@Test
 //	void updateQuiz() {
