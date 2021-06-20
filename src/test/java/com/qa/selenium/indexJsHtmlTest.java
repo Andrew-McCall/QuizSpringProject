@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -44,8 +45,7 @@ public class indexJsHtmlTest {
 		//options.setHeadless(true);
 		driver = new ChromeDriver(options);
 
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
 	@Test
@@ -67,10 +67,8 @@ public class indexJsHtmlTest {
 	void readQuestion() {
 		driver.get("http://localhost:" + port); 
 		
-		targ = driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr/td[1]"));
-		assertEquals("Example Q", targ.getText());
-		targ = driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr/td[2]"));
-		assertEquals("Example A", targ.getText());
+		assertEquals("Example Q", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr/td[1]")).getText());
+		assertEquals("Example A", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr/td[2]")).getText());
 	}
 	
 	@Test
@@ -117,20 +115,39 @@ public class indexJsHtmlTest {
 
 		driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr[1]/td[3]/button[2]")).click();
 		
-		System.out.println(driver.findElements(By.xpath("/html/body/main/div[2]/div[1]/table")));
 		assertTrue(!driver.findElements(By.xpath("/html/body/main/div[2]/div[1]/table")).isEmpty());
 
 	}
-//	
-//	@Test
-//	void updateQuiz() {
-//		
-//	}
-//	
-//	@Test
-//	void updateQuestion() {
-//		
-//	}
+	
+	@Test
+	void updateQuiz() throws InterruptedException {
+		driver.get("http://localhost:" + port); 
+
+		driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/button[2]")).click();
+		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[2]/form/div[1]/input")).sendKeys(" - Edit");
+		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[2]/form/div[2]/input")).sendKeys(" - Edit Also");
+		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/button[1]")).click();
+		
+		driver.navigate().refresh();
+	
+		assertEquals("Starting Name Value", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/div/h5")).getText());
+		assertEquals("Starting Desc Value", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/div/h6")).getText());
+	}
+	
+	@Test
+	void updateQuestion(){
+		driver.get("http://localhost:" + port); 
+		
+		driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr[1]/td[3]/button[1]")).click();
+		driver.findElement(By.id("questionEditQuestion")).sendKeys(" - Edit");
+		driver.findElement(By.id("questionEditAnswer")).sendKeys(" - Edit Also");
+		driver.findElement(By.id("questionEditModalButton")).click();
+		
+		driver.navigate().refresh();
+		
+		assertEquals("Example Q - Edit", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr/td[1]")).getText());
+		assertEquals("Example A - Edit Also", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr/td[2]")).getText());
+	}
 	
 	
 
