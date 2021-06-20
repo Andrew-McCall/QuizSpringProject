@@ -9,12 +9,13 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
 public class Question {
 
 	@Id
@@ -23,7 +24,7 @@ public class Question {
 	
 	@ManyToOne()
 	@JsonBackReference
-	@JoinColumn(name="quiz_id", nullable=false)
+	@JoinColumn(name="quiz_id")
     private Quiz quiz;
 
 	private String question;

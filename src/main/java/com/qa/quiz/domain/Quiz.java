@@ -1,6 +1,6 @@
 package com.qa.quiz.domain;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,12 +11,13 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
 public class Quiz {
 
 	@Id
@@ -27,7 +28,7 @@ public class Quiz {
 	private String description;
 
 	@JsonManagedReference
-	@OneToMany( mappedBy="quiz", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private Set<Question> questions;
+	@OneToMany(mappedBy="quiz", cascade = CascadeType.ALL)
+    private List<Question> questions;
 	
 }
