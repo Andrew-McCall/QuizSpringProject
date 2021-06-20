@@ -31,7 +31,7 @@ public class indexJsHtmlTest {
 	@LocalServerPort
 	private int port;
 	
-	private RemoteWebDriver driver;
+	private static RemoteWebDriver driver;
     private static WebElement targ;
 
 
@@ -85,11 +85,21 @@ public class indexJsHtmlTest {
 		
 	}
 	
-//	@Test
-//	void createQuestion() {
-//		
-//	}
-//	
+	@Test
+	void createQuestion() {
+		driver.get("http://localhost:" + port); 
+		
+		driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/button[3]")).click();
+		driver.findElement(By.id("questionQuestion")).sendKeys("Test Question 01");
+		driver.findElement(By.id("questionAnswer")).sendKeys("Test Answer 01");
+		driver.findElement(By.id("questionCreateModalButton")).click();
+		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div[3]/button[2]")).click();
+		
+		assertEquals("Test Question 01", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr[2]/td[1]")).getText());
+		assertEquals("Test Answer 02", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/table/tbody/tr[2]/td[2]")).getText());
+		
+	}
+
 //	@Test
 //	void deleteQuiz() {
 //		
@@ -117,9 +127,9 @@ public class indexJsHtmlTest {
 		driver.close();
 	}
 	
-//	@AfterAll
-//	void completeQuit() {
-//		driver.quit();
-//	}
+	@AfterAll
+	static void completeQuit() {
+		driver.quit();
+	}
 	
 }
