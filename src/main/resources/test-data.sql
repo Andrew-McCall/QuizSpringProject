@@ -1,0 +1,2 @@
+INSERT INTO `quiz` (`id`, `description`, `name`) VALUES (null, 'Starting Desc Value', 'Starting Name Value');
+INSERT INTO `question` (`id`, `question`, `answer`, `quiz_id`) VALUES (null, 'Example Q', 'Example A', 1);
