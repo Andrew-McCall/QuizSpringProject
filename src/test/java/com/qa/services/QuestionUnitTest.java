@@ -43,7 +43,7 @@ public class QuestionUnitTest {
 	}
 	
 	@Test
-	void quizUpdate() {
+	void questionUpdate() {
 
 		
 		Long id = 1L;
@@ -65,7 +65,7 @@ public class QuestionUnitTest {
 	}
 
 	@Test
-	void quizDelete() {
+	void questionDelete() {
 		Long id = 1L;
 
 		Mockito.when(this.repo.existsById(id)).thenReturn(false);
