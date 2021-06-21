@@ -10,12 +10,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -34,7 +31,6 @@ public class indexJsHtmlTest {
 	private int port;
 	
 	private static RemoteWebDriver driver;
-    private static WebElement targ;
 
 
 	@BeforeEach
@@ -42,7 +38,7 @@ public class indexJsHtmlTest {
 		System.setProperty("webdriver.chrome.driver", "C:/Users/andre/Documents/eclipse/QuizSpringProject/src/test/resources/chromedriver.exe");
 
 		ChromeOptions options = new ChromeOptions();
-		//options.setHeadless(true);
+		options.setHeadless(true);
 		driver = new ChromeDriver(options);
 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
