@@ -43,7 +43,6 @@ public class QuizService {
 		existing.setId(id);
 		existing.setName(quiz.getName());
 		existing.setDescription(quiz.getDescription());
-//		existing.setQuestions(quiz.getQuestions());
 		
 		return this.repo.save(existing);
 	}

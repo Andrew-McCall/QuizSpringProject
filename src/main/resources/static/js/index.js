@@ -4,7 +4,7 @@ async function create(){
 
   if (name.value=="" || desc.value == "") return;
 
-  fetch("./quiz/create", { 
+  fetch("/quiz/create", { 
   method: 'post',
   headers: {
   "Content-type": "application/json"
@@ -25,7 +25,7 @@ async function create(){
 }
 
 async function deleteQuiz(i){
-  fetch("./quiz/delete/"+i, { 
+  fetch("/quiz/delete/"+i, { 
     method: 'delete',
     headers: {
     "Content-type": "application/json"
@@ -37,7 +37,7 @@ async function deleteQuiz(i){
 }
 
 async function deleteQuestion(i){
-  fetch("./question/delete/"+i, { 
+  fetch("/question/delete/"+i, { 
     method: 'delete',
     headers: {
     "Content-type": "application/json"
@@ -76,7 +76,7 @@ function updateUseModal(question, answer){
 }
 
 async function useQuizPopup(i){
-  fetch("./quiz/getQuiz/"+i, { 
+  fetch("/quiz/getQuiz/"+i, { 
     method: 'get', 
     headers: {
     "Content-type": "application/json" //3
@@ -107,7 +107,7 @@ async function createQuestion(i){
 
   if (question.value==""||answer.value=="") return;
 
-  fetch("./question/create", {
+  fetch("/question/create", {
     method: 'post', 
     headers: {
     "Content-type": "application/json" 
@@ -134,7 +134,7 @@ async function editQuiz(i){
 
   if (name.value==""||desc.value=="") return;
 
-  fetch("./quiz/update/"+i, {
+  fetch("/quiz/update/"+i, {
     method: 'put', 
     headers: {
     "Content-type": "application/json" 
@@ -156,7 +156,7 @@ async function editQuestion(i){
 
   if (question.value==""||answer.value=="") return;
 
-  fetch("./question/update/"+i, {
+  fetch("/question/update/"+i, {
     method: 'put', 
     headers: {
     "Content-type": "application/json" 
@@ -174,7 +174,7 @@ async function editQuestion(i){
 
 
 async function getAll(){
-  fetch("./quiz/getAll", { //1
+  fetch("/quiz/getAll", { //1
   method: 'get', //2
   headers: {
   "Content-type": "application/json" //3
@@ -265,4 +265,6 @@ async function getAll(){
   .catch((error) => console.log(`Request failed ${error}`))
 }
 
-getAll()
+window.addEventListener('load', function () {
+  getAll();
+})
