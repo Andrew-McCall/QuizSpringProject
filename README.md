@@ -8,6 +8,7 @@ For each, This project used the most recent release as of (15/06/21).
 Other Versions should work but have not been tested.
 
  - Maven 3.8.1 - [Download](https://mirrors.ukfast.co.uk/sites/ftp.apache.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.zip)
+ - Java 11 - [Download](https://www.oracle.com/uk/java/technologies/javase-jdk11-downloads.html)
  - Eclipse (With Lombok)- [Download](https://www.eclipse.org/downloads/) 
  - MySQL-Workbench - [Download](https://www.mysql.com/products/workbench/)
  - SonarQube - [Download](https://www.sonarqube.org/?gads_campaign=Europe-4-DSA-SonarQube&gads_ad_group=DSA&gads_keyword=&gclid=CjwKCAjw8cCGBhB6EiwAgORey3WqaDt66CWdu4s3VNqBTLe4S-wH6IJXg5HBJY2ApQBE6IrnV22QJhoCP78QAvD_BwE])
