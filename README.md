@@ -1,6 +1,7 @@
 # QuizSpringProject
 
 This is a Spring Boot Website, API and MySQL database that allows a user to create, store and use different sets of flashcards.
+[Jira Link](https://andrew-mccall.atlassian.net/jira/software/projects/QSP/boards/3/backlog)
 
 ## Getting Started
 
