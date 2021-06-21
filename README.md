@@ -8,7 +8,7 @@ For each, This project used the most recent release as of (15/06/21).
 Other Versions should work but have not been tested.
 
  - Maven 3.8.1 - [Download](https://mirrors.ukfast.co.uk/sites/ftp.apache.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.zip)
- - Eclipse - [Download](https://www.eclipse.org/downloads/)
+ - Eclipse (With Lombok)- [Download](https://www.eclipse.org/downloads/) 
  - MySQL-Workbench - [Download](https://www.mysql.com/products/workbench/)
  - SonarQube - [Download](https://www.sonarqube.org/?gads_campaign=Europe-4-DSA-SonarQube&gads_ad_group=DSA&gads_keyword=&gclid=CjwKCAjw8cCGBhB6EiwAgORey3WqaDt66CWdu4s3VNqBTLe4S-wH6IJXg5HBJY2ApQBE6IrnV22QJhoCP78QAvD_BwE])
 
@@ -54,8 +54,8 @@ Use "mvn clean package" to build, test and sonarqube the project.
 - Source Code Management: GitHub
 - Kanban Board: Jira
 - Database Management System: MySQL (GCP)
-- Back-End Programming Language: Java
-- API Development Platform: Spring
+- Back-End Programming Language: Java (With Lombok)
+- API Development Platform: Spring Boot
 - Front-End Web Technologies: HTML, CSS, JavaScript
 - Build Tool: Maven
 - Static Analysis: SonarQube
