@@ -14,7 +14,10 @@
 	<name>SpringQuizProject</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>		  
+		<sonar.projectKey>Andrew-McCall_QuizSpringProject</sonar.projectKey>
+		<sonar.organization>andrew-mccall</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 	    <dependency>
@@ -34,7 +37,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-engine</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

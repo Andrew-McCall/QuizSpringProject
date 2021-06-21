@@ -1,7 +1,6 @@
 package com.qa.selenium;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -126,8 +125,8 @@ public class indexJsHtmlTest {
 		
 		driver.navigate().refresh();
 	
-		assertEquals("Starting Name Value", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/div/h5")).getText());
-		assertEquals("Starting Desc Value", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/div/h6")).getText());
+		assertEquals("Starting Name Value - Edit", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/div/h5")).getText());
+		assertEquals("Starting Desc Value - Edit Also", driver.findElement(By.xpath("/html/body/main/div[2]/div[1]/div/h6")).getText());
 	}
 	
 	@Test
