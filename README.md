@@ -4,6 +4,30 @@ This is a Spring Boot Website, API and MySQL database that allows a user to crea
 
 ## Getting Started
 
+For each, This project used the most recent release as of (15/06/21).
+Other Versions should work but have not been tested.
+
+ - Maven 3.8.1 - [Download](https://mirrors.ukfast.co.uk/sites/ftp.apache.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.zip)
+ - Eclipse - [Download](https://www.eclipse.org/downloads/)
+ - MySQL-Workbench - [Download](https://www.mysql.com/products/workbench/)
+ - SonarQube - [Download](https://www.sonarqube.org/?gads_campaign=Europe-4-DSA-SonarQube&gads_ad_group=DSA&gads_keyword=&gclid=CjwKCAjw8cCGBhB6EiwAgORey3WqaDt66CWdu4s3VNqBTLe4S-wH6IJXg5HBJY2ApQBE6IrnV22QJhoCP78QAvD_BwE])
+
+If you wish to use another database then the default GCP or testing memory based h2, 
+Change Application-production.properties (for production properties)
+
+```
+spring.datasource.url=jdbc:mysql: New Url
+spring.datasource.username= New Username
+spring.datasource.password= New Password
+```
+Change Application-testing.properties (for testing properties)
+```
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.h2.console.path=/h2-console
+spring.datasource.username= New Username
+spring.datasource.password= New Password
+```
+*The testing-data.sql & testing Schema-sql can also be updated if testing requires new data (the .sql must be in h2 sql)*
 
 
 ## Testing
@@ -16,22 +40,12 @@ The tests use Junit 5 (Jupiter), Mockito & Selenium
 *All tests use h2 memory database and test on the data.sql data*
 
 ## Sonarqube
-Sonarqube was used to help detect bugs and application security vulnerabilities. Sonarqube found 0 bugs, 4 vulnerabilities and 35 different code smells which can be fixed and refactored. I fixed the vulnerabilities and 29 code smells. A code smell and vulnerability sonarqube found is shown below.
+Sonarqube is a tool used to perform automatic reviews/analysis of code to detect bugs, code smells, and security vulnerabilities.
 
-final int prime = 31;
-Declare this local variable with "var" instead.
-public VehicleDTO addVehicle(@RequestBody Vehicle vehicle) {
-Replace this persistent entity with a simple POJO or DTO object.
-Deployment
-The following steps create a jar file and run the application in the git bash window.
+The maven pom is setup to send all builds to the local sonarqube server (localhost:9000).
+Use "mvn clean package" to build, test and sonarqube the project.
 
-Open git bash in the application root folder
-
-Type mvn clean package
-
-Using git bash navigate to the target folder
-
-Type java -jar HobbyProject-0.0.1-SNAPSHOT.jar
+*Sonarqube test coverage has been enabled so coverage is shown on the report*
 
 
 ## All Technologies
