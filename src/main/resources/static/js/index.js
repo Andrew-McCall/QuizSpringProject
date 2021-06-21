@@ -1,4 +1,4 @@
-async function create(){
+function create(){
   const name = document.getElementById("quizName");
   const desc = document.getElementById("quizDescription");
 
@@ -24,7 +24,7 @@ async function create(){
 
 }
 
-async function deleteQuiz(i){
+function deleteQuiz(i){
   fetch("/quiz/delete/"+i, { 
     method: 'delete',
     headers: {
@@ -36,7 +36,7 @@ async function deleteQuiz(i){
     .catch((error) => console.log(`Request failed ${error}`))
 }
 
-async function deleteQuestion(i){
+function deleteQuestion(i){
   fetch("/question/delete/"+i, { 
     method: 'delete',
     headers: {
@@ -75,7 +75,7 @@ function updateUseModal(question, answer){
   modalQuestion.setAttribute("aria-expanded","false");
 }
 
-async function useQuizPopup(i){
+function useQuizPopup(i){
   fetch("/quiz/getQuiz/"+i, { 
     method: 'get', 
     headers: {
@@ -101,7 +101,7 @@ async function useQuizPopup(i){
     ).catch((error) => console.log(`Request failed ${error}`))
 }
 
-async function createQuestion(i){
+function createQuestion(i){
   let question = document.getElementById("questionQuestion");
   let answer = document.getElementById("questionAnswer");
 
@@ -128,7 +128,7 @@ async function createQuestion(i){
 }
 
 
-async function editQuiz(i){
+function editQuiz(i){
   let name = document.getElementById("quizEditName");
   let desc = document.getElementById("quizEditDescription");
 
@@ -150,7 +150,7 @@ async function editQuiz(i){
     .catch((error) => console.log(`Request failed ${error}`))
 }
 
-async function editQuestion(i){
+function editQuestion(i){
   let question = document.getElementById("questionEditQuestion");
   let answer = document.getElementById("questionEditAnswer");
 
@@ -173,7 +173,7 @@ async function editQuestion(i){
 }
 
 
-async function getAll(){
+function getAll(){
   fetch("/quiz/getAll", { //1
   method: 'get', //2
   headers: {
